@@ -4,41 +4,36 @@
     <meta charset="UTF-8">
     <title>💗献给石娅娅的圣诞树💗</title>
     <style>
-        html,body{
+        html,body {
             margin: 0;
-            width:100%;
+            width: 100%;
             height: 100%;
+            overflow: hidden;
         }
-        #main{
-	position: absolute; 
-		top: 0; 
-		left: 0; 
-}
-        #video1{
-            width:100%;
-            height:100%;
+        #main {
+            position: absolute;
+            top: 0;
+            left: 0;
         }
-        .hidden{
-            display:none;
+        #video1 {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     </style>
-    
 </head>
 <body>
-
-
     <div id="main">
-        <video id="video1" muted="muted" autoplay="autoplay" loop="loop" src="sy.MP4">
+        <video id="video1" muted="muted" autoplay="autoplay" loop="loop">
+            <source src="sy.MP4" type="video/mp4">
+            您的浏览器不支持视频播放。
         </video>
     </div>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var video = document.getElementById("video1");
+            video.play();
+        });
+    </script>
 </body>
-<script type="text/javascript">
-    $(function(){
-		var video = document.getElementById("video1");
-        video.src = "";
-        video.play();
-    });
-</script>
 </html>
-
-

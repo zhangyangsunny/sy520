@@ -63,8 +63,8 @@
 </head>
 <body>
     <div id="main">
-        <video id="video1" muted loop playsinline>
-            <source src="http://sovqie3gq.hd-bkt.clouddn.com/sy.MP4" type="video/mp4">
+        <video id="video1" loop playsinline>
+            <source src="http://sovqie3gq.hd-bkt.clouddn.com/sy1.MP4" type="video/mp4">
             您的浏览器不支持视频播放。
         </video>
         <button id="playBtn">
@@ -80,6 +80,8 @@
             // 尝试播放视频并处理错误
             video.play().then(function() {
                 document.getElementById("playBtn").style.display = 'none'; // 播放后隐藏按钮
+                video.muted = false;  // 开启声音
+                video.volume = 1.0;   // 设置音量为最大
             }).catch(function(error) {
                 console.log("自动播放失败，尝试手动播放", error);
                 video.play(); // 如果自动播放失败，尝试手动播放

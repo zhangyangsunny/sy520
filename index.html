@@ -25,19 +25,60 @@
             height: 100vh;
             object-fit: cover;
         }
+        #playBtn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 220px;
+            height: 120px;
+            background-color: #ff5e5e;
+            border: 2px solid #f1f1f1;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            background-image: linear-gradient(to bottom right, #ff1f1f, #ff5e5e);
+            text-align: center;
+        }
+        #playBtn:before {
+            content: "✉️"; /* 添加信封图标 */
+            font-size: 50px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        #playBtn:hover {
+            background-color: #ff1f1f;
+        }
+        #playBtn span {
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 <body>
     <div id="main">
-        <video id="video1" muted autoplay loop playsinline>
+        <video id="video1" muted loop playsinline>
             <source src="sy.mp4" type="video/mp4">
             您的浏览器不支持视频播放。
         </video>
+        <button id="playBtn">
+            <span>石娅娅，请领取您的圣诞树</span>
+        </button>
     </div>
+
     <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById("playBtn").addEventListener('click', function() {
             var video = document.getElementById("video1");
-            video.play();
+            video.play().then(function() {
+                document.getElementById("playBtn").style.display = 'none'; // 播放后隐藏按钮
+            }).catch(function(error) {
+                console.log("自动播放失败，手动播放", error);
+            });
         });
     </script>
 </body>

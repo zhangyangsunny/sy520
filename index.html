@@ -24,6 +24,7 @@
             width: 100vw;
             height: 100vh;
             object-fit: cover;
+            display: none; /* 初始时隐藏视频 */
         }
         #playBtn {
             position: absolute;
@@ -74,10 +75,14 @@
     <script type="text/javascript">
         document.getElementById("playBtn").addEventListener('click', function() {
             var video = document.getElementById("video1");
+            video.style.display = 'block'; // 显示视频
+
+            // 尝试播放视频并处理错误
             video.play().then(function() {
                 document.getElementById("playBtn").style.display = 'none'; // 播放后隐藏按钮
             }).catch(function(error) {
-                console.log("自动播放失败，手动播放", error);
+                console.log("自动播放失败，尝试手动播放", error);
+                video.play(); // 如果自动播放失败，尝试手动播放
             });
         });
     </script>

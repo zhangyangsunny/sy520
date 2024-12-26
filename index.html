@@ -21,9 +21,9 @@
             overflow: hidden;
         }
         #video1 {
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* 保持视频宽高比并完整显示在容器内 */
             display: none; /* 初始时隐藏视频 */
         }
         #playBtn {
@@ -64,9 +64,10 @@
 <body>
     <div id="main">
         <video id="video1" loop playsinline>
-            <source src="sy.mp4" type="video/mp4">
-            您的浏览器不支持视频播放。
-        </video>
+    <source src="sy.mp4" type="video/mp4">
+    您的浏览器不支持视频播放。
+</video>
+
         <button id="playBtn">
             <span>石娅娅，请领取您的圣诞树</span>
         </button>
@@ -80,8 +81,6 @@
             // 尝试播放视频并处理错误
             video.play().then(function() {
                 document.getElementById("playBtn").style.display = 'none'; // 播放后隐藏按钮
-                video.muted = false;  // 开启声音
-                video.volume = 1.0;   // 设置音量为最大
             }).catch(function(error) {
                 console.log("自动播放失败，尝试手动播放", error);
                 video.play(); // 如果自动播放失败，尝试手动播放
